@@ -10,15 +10,13 @@ const useStyles = makeStyles({
     fontFamily: "Roboto Condensed",
     fontSize: "30px",
     marginBottom: "20px",
-    color : "white"
+    color: "white",
   },
-
-  title2 : {
+  title2: {
     fontFamily: "Roboto Condensed",
     fontSize: "30px",
-    marginBottom : "10px"
+    marginBottom: "10px",
   },
-
   input: {
     width: "500px",
     marginBottom: "20px",
@@ -33,22 +31,19 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     padding: "30px",
-    backgroundColor : "#ccb182",
-    width : "500px", 
-    borderRadius : "10px", 
-    marginLeft : "33%", 
-    marginTop : "50px"
-    
+    backgroundColor: "#ccb182",
+    width: "500px",
+    borderRadius: "10px",
+    marginLeft: "33%",
+    marginTop: "50px",
   },
-
-  list : {
-  fontFamily : "Dancing Script", 
-  fontSize : "40px"
-  }, 
-
-  membre : {
-      marginTop : "100px"
-  }
+  list: {
+    fontFamily: "Dancing Script",
+    fontSize: "40px",
+  },
+  membre: {
+    marginTop: "100px",
+  },
 });
 
 function Form(props) {
@@ -57,9 +52,9 @@ function Form(props) {
   const [members, setMembers] = React.useState([]);
 
   const [addMembers, setAddMembers] = React.useState({
-      name : ""
-  })
-     
+    name: "",
+  });
+
   useEffect(() => {
     axios
       .get("http://localhost:3030/api/members")
@@ -68,14 +63,13 @@ function Form(props) {
         setMembers(data);
       });
   });
-  
+
   const createMembers = () => {
     axios.post("http://localhost:3030/api/members", addMembers);
   };
 
   const handleTextFieldChange = (e) => {
     setAddMembers({ ...members, [e.target.name]: e.target.value });
-   
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -108,7 +102,9 @@ function Form(props) {
         </div>
       </div>
       <div className={classes.membre}>
-        <Typography className={classes.title2}>Membres de l'équipage</Typography>
+        <Typography className={classes.title2}>
+          Membres de l'équipage
+        </Typography>
         {members.map((member, index) => (
           <Typography className={classes.list}>{member.name}</Typography>
         ))}
